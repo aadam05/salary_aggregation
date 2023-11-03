@@ -34,9 +34,9 @@ async def aggregate_data(dt_from: str, dt_upto: str, group_type: str) -> dict:
       "dataset": [],
       "labels": []
     }
-    async for document in cursor:
-      result['dataset'].append(document['total'])
-      result['labels'].append(document['_id'])
+    async for document in cursor: 
+      result["dataset"].append(document["total"])
+      result["labels"].append(document["_id"])
 
     return result
   except Exception as e:

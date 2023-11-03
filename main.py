@@ -23,11 +23,11 @@ async def on_start(message: Message):
 @dp.message()
 async def on_aggregate(message: Message):
   try:
-    data = json.loads(message.text.replace("'", '"'))
+    data = json.loads(message.text)
 
     if 'dt_from' in data and 'dt_upto' in data and 'group_type' in data:
       result = await aggregate_data(data['dt_from'], data['dt_upto'], data['group_type'])
-      await message.answer(str(result)) if result else message.answer("Нету данных")
+      await message.answer(str(result).replace("'", '"')) if result else message.answer("Нету данных")
     else:
       await message.answer("Отсутствуют необходимые данные")
       
